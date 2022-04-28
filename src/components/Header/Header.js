@@ -3,7 +3,7 @@ import "./Header.css";
 const Header = ({ setCat, setSortBy, categories, sortOptions }) => {
   return (
     <nav className="product-filter">
-      <h1>NoCode-Shop</h1>
+      <h1>BayBridge Merch Shop</h1>
 
       <div className="sort">
         <div className="collection-sort">

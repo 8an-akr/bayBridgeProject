@@ -17,7 +17,7 @@ function App() {
   const [itemList, setItemList] = useState([]);
 
   async function getItems() {
-    const res = await fetch("http://localhost:5001");
+    const res = await fetch("https://fakestoreapi.com/products");
     const data = await res.json();
     setItemList(data);
   }
