@@ -1,7 +1,7 @@
 import "./ProductCard.css";
 
-const ProductCard = ({ title, image, price, rating, count }) => (
-  <div className="product-card" onClick={() => alert("Out of Stock")}>
+const ProductCard = ({ title, image, price, rating, count, id, addToCart }) => (
+  <div className="product-card" onClick={() => addToCart(id)}>
     <div className="product-image">
       <img src={image} alt="" />
     </div>

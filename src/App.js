@@ -19,6 +19,7 @@ function App() {
   async function getItems() {
     const res = await fetch("https://fakestoreapi.com/products");
     const data = await res.json();
+    data.forEach((item) => (item.quantity = 0));
     setItemList(data);
   }
 
@@ -33,6 +34,7 @@ function App() {
   const [sortBy, setSortBy] = useState("Featured");
 
   const [cartArr, setCartArr] = useState([]);
+  const [cart, setCart] = useState([]);
 
   const categories = [
     "All items",
@@ -68,6 +70,16 @@ function App() {
       ? [...arr].sort((a, b) => b.price - a.price)
       : {};
 
+  const addToCart = (id) => {
+    setCart([]);
+    const item = itemArr.find((item) => item.id === id);
+    item.quantity++;
+    itemArr.filter((item) => item.quantity > 0);
+    if (item.name) {
+    }
+    setCart([item]);
+  };
+
   return (
     <>
       <Header
@@ -76,8 +88,15 @@ function App() {
         categories={categories}
         sortOptions={sortOptions}
       />
-      <Products itemArr={itemArr} />
-      <Cart />
+      <Products
+        itemArr={itemArr}
+        cartArr={cartArr}
+        setCartArr={setCartArr}
+        addToCart={addToCart}
+      />
+      <div className="cartContainer">
+        <Cart cart={cart} />
+      </div>
     </>
   );
 }

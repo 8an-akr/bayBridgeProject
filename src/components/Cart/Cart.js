@@ -1,11 +1,18 @@
 import "./Cart.css";
 
-const Cart = ({}) => {
-  return (
-    <div className="cartContainer">
-      <h4>Cart:</h4>
-    </div>
-  );
+const Cart = ({ cart }) => {
+  return cart.map((item) => {
+    console.log(item);
+    if (item.quantity > 0) {
+      return (
+        <div>
+          {item.title} {item.quantity} -
+        </div>
+      );
+    } else {
+      return <></>;
+    }
+  });
 };
 
 export default Cart;
